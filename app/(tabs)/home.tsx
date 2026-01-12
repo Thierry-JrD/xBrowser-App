@@ -16,42 +16,42 @@ export default function HomeScreen() {
   
   return (
     
-    <ScrollView style={styles.scrollViewContainer}>
+    
       <View style={styles.container}>
-        <View style={{ flex: 1, gap: 10, flexDirection: 'column', height: 50 }}>
+        <View style={{ justifyContent: 'center', alignItems: 'center', height: 50 }}>
           <SearchBar color={Colors[colorScheme ?? 'light'].tint} />
         </View>
+        <ScrollView style={styles.scrollViewContainer}>
+          <View>
+            <SpeedDialGrid color={Colors[colorScheme ?? 'light'].tint} />
+          </View>
 
-        <View>
-          <SpeedDialGrid color={Colors[colorScheme ?? 'light'].tint} />
-        </View>
+          <View>
+            <ActuCardStack color={Colors[colorScheme ?? 'light'].tint} />
+          </View>
 
-        <View>
-          <ActuCardStack color={Colors[colorScheme ?? 'light'].tint} />
-        </View>
+          <View>
+            {
+              array.map((_, index) => (
+                <View key={index} style={styles.box}>
+                  <InfoBoxType1 color={Colors[colorScheme ?? 'light'].tint} />
+                </View>
+              ))
+            }
+          </View>
 
-        <View>
-          {
-            array.map((_, index) => (
-              <View key={index} style={styles.box}>
-                <InfoBoxType1 color={Colors[colorScheme ?? 'light'].tint} />
-              </View>
-            ))
-          }
-        </View>
-
-        <View>
-          {
-            array.map((_, index) => (
-              <View key={index} style={styles.box}>
-                <InfoBoxType2 color={Colors[colorScheme ?? 'light'].tint} />
-              </View>
-            ))
-          }
-        </View>
-      
+          <View>
+            {
+              array.map((_, index) => (
+                <View key={index} style={styles.box}>
+                  <InfoBoxType2 color={Colors[colorScheme ?? 'light'].tint} />
+                </View>
+              ))
+            }
+          </View>
+        </ScrollView>
       </View>
-    </ScrollView>
+    
   )
 }
 
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     flex: 1,
+    marginTop: 10,
   },
   box: { 
     margin: 2,  
